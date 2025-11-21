@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+<article class="post">
+  {% assign latest_post = site.posts.first %}
+  
+  {% if latest_post %}
+    <h1 class="post-title"><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h1>
+    <p class="post-date">{{ latest_post.date | date: "%d %B %Y" }}</p>
+
+    <div class="entry">
+      {{ latest_post.content }}
+    </div>
+
+    <div class="post-navigation">
+      <a href="mailto:comments@tacticsjournal.com?subject=Re:%20{{ latest_post.title | uri_escape }}&body={{ site.url }}{{ latest_post.url | uri_escape }}">Reply</a>
+      <a href="#top">Back to top</a>
+
+      <script>
+        function copyToClipboard() {
+          const url = document.URL;
+        }
+      </script>
+
+      <a href="mailto:?subject={{ latest_post.title }}&body={{ site.url }}{{ latest_post.url }}">Email this post</a>
+      {% include copylink.html %} 
+    </div>
+
+    <div class="subscribe-section">
+          <form action="https://buttondown.com/api/emails/embed-subscribe/TacticsJournal" 
+                method="post" 
+                target="_blank"
+                id="subscribeForm">
+            <div class="form-container">
+              <input type="email" name="email" id="email" placeholder="Enter your email to subscribe..." required>
+              <button type="submit" id="subscribeButton">
+                <svg width="15" height="15" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 50 L40 80 L90 20" stroke="black" stroke-width="15" fill="none"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+  {% else %}
+    <p>No posts available.</p>
+  {% endif %}
+  
+  <div class="archive-filters">
+    <a href="#" class="cat-link active" data-cat="all">All</a>
+    <a href="#" class="cat-link" data-cat="between-the-posts">Between The Posts</a>
+  </div>
+
+  <style>
+    .archive-filters { display:flex; gap:.75rem; font-size:12px;padding-top: 10px; }
+    .cat-link { text-decoration:none; color:#333; word-spacing: -0.6px; }
+    .cat-link.active { border-color:#000; font-weight:bold; }
+    .hidden { display:none !important; }
+  </style>
+  
+  <div class="archive">
+  {% assign grouped_posts = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for year in grouped_posts %}
+    <div class="archive-year">
+      {% assign first_month_displayed = false %}
+      {% assign month_posts = year.items | group_by_exp: "post", "post.date | date: '%B'" %}
+      
+      {% for month in month_posts %}
+        <div class="year-month">
+          {% if first_month_displayed == false %}
+            <h3 class="year">{{ year.name }}</h3>
+            {% assign first_month_displayed = true %}
+          {% else %}
+            <h3 class="year-placeholder"></h3>
+          {% endif %}
+          <h3 class="month">{{ month.name }}</h3>
+        </div>
+
+        <ul class="archive-list">
+          {% for post in month.items %}
+            {% assign day = post.date | date: '%-d' %}
+            {% assign last_digit = day | slice: -1 %}
+            {% assign suffix = 'th' %}
+            
+            {% if day != '11' and day != '12' and day != '13' %}
+              {% if last_digit == '1' %}
+                {% assign suffix = 'st' %}
+              {% elsif last_digit == '2' %}
+                {% assign suffix = 'nd' %}
+              {% elsif last_digit == '3' %}
+                {% assign suffix = 'rd' %}
+              {% endif %}
+            {% endif %}
+
+            {% assign cats_slug = post.categories | join: '|' | downcase | replace: ' ', '-' %}
+            <li data-cats="{{ cats_slug }}">
+              <div class="post-title-archive">
+                <a href="{{ post.url }}">{{ post.title | strip_html | escape }}</a>
+                <span class="dots-archive"></span>
+              </div>
+              <span class="post-date-archive">{{ day }}{{ suffix }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  </div> <!-- end .archive -->
+
+  <!-- SHOW MORE block (centered) -->
+  <div class="archive-more">
+    <a href="#" id="show-more">Show More</a>
+  </div>
+
+  <style>
+    .archive-more { text-align:center; margin:1rem 0 2rem; }
+    .archive-more a { text-decoration:none; color:#333; font-size:12px; }
+    .archive-more.hidden { display:none; }
+  </style>
+
+</article>

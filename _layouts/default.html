@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} - Erin Bakes{% else %}Erin Bakes{% endif %}</title>
+
+    {% include favicon.html %}
+     
+    {% if site.tags != "" %}
+    {% include collecttags.html %}
+    {% endif %}
+
+    {% include meta.html %}
+    {% include json-ld.html %}
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  </head>
+
+  <!doctype html>
+<html lang="en">
+<head>
+      <body>
+        <main class="page">
+          <section class="top">
+            <!-- LEFT -->
+            <div>
+              <div class="profile">
+                <div class="avatar">
+                  <!-- Replace with Erin headshot -->
+                  <img src="sandbox:/mnt/data/B92679AF-5C1F-4757-B403-3B8266DF0B28.jpeg" alt="Erin headshot">
+                </div>
+
+                <h1 class="name" aria-label="Erin Bakes">
+                  Erin <span class="accent">Bakes</span>
+                </h1>
+
+                <div class="location">Washington, DC</div>
+              </div>
+
+              <p class="blurb">
+                I believe that pastry is an emotional architecture.
+                My work explores the intersection of seasonality,
+                structural precision, and organic beauty.
+              </p>
+            </div>
+
+            <!-- RIGHT -->
+            <form class="contact" action="#" method="post">
+              <div class="field">
+                <label class="label" for="fullName">Full Name</label>
+                <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label class="label" for="email">Email Address</label>
+                <input class="input" id="email" name="email" type="email" autocomplete="email" />
+              </div>
+
+              <div class="field">
+                <label class="label" for="dateVenue">Date &amp; Venue</label>
+                <input class="input" id="dateVenue" name="dateVenue" type="text" />
+              </div>
+
+              <div class="field">
+                <label class="label" for="message">Message</label>
+                <textarea class="textarea" id="message" name="message"></textarea>
+              </div>
+
+              <button class="submit" type="submit">Send</button>
+            </form>
+          </section>
+
+          <!-- LOWER PHOTO -->
+          <section class="gallery" aria-label="Work">
+            <!-- Replace with your cake photo -->
+            <img
+              class="cake-shot"
+              src="sandbox:/mnt/data/B92679AF-5C1F-4757-B403-3B8266DF0B28.jpeg"
+              alt="Cake example"
+            />
+          </section>
+        </main>
+      </body>
+</html>
+
+
+
+
