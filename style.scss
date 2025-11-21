@@ -27,7 +27,7 @@
     .top{
       display:grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
-      gap:56px;
+      gap:14px;
       align-items:start;
     }
     
@@ -164,23 +164,3 @@
       display:block;
       background:#eee;
     }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px){
-      .top{
-       gap:24px;
-       grid-template-columns: minmax(0, 1fr) minmax(220px, 1fr);
-      }
-      .name{font-size:54px}
-      .profile{
-        grid-template-columns:110px 1fr;
-      }
-      .avatar{width:110px}
-    }
-
-@media (max-width: 520px){
-  .top{
-    gap:14px;
-    grid-template-columns: 1fr 1fr;
-  }
-}
