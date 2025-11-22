@@ -284,6 +284,16 @@ body {
 
 /* NAV */
 
+.subscribe {
+  font-family: "Playfair Display", Georgia, serif;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 10px;
+  justify-content: center; 
+  width: 100%;
+}
+
 .nav {
   font-family: "Playfair Display", Georgia, serif;
   display: flex;
