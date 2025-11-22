@@ -630,31 +630,52 @@ h1 {
   color: var(--muted);
 }
 
-/* === Sidebar layout above 760px === */
+/* === Sidebar layout above 760px (uses .sidebar + .main + footer) === */
 @media (min-width: 760px) {
   .page {
     display: grid;
     grid-template-columns: 300px minmax(0, 1fr); /* sidebar | main */
-    gap: 28px;
+    column-gap: 28px;
+    row-gap: 22px;
     align-items: start;
-    padding: 48px 28px 0; /* keep your top spacing */
+    padding: 48px 28px 0;
   }
 
-  /* Sidebar */
-  .top {
+  /* Sidebar column */
+  .sidebar {
     grid-column: 1;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: 22px;
-    padding: 0;          /* sidebar inherits page padding */
-    position: sticky;    /* optional: keeps sidebar visible while scrolling */
+    position: sticky;
     top: 24px;
+    min-width: 0;
+  }
+
+  /* Main content column */
+  .main {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 0;
+  }
+
+  /* Footer under nav/subscribe in left column */
+  .footer {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+    margin-top: 8px;
+  }
+
+  /* .top is inside sidebar now, so remove its page padding */
+  .top {
+    padding: 0;
   }
 
   /* kill the old two-col intent inside .top */
   .top > .left,
   .top > .contact {
-    grid-column: auto;
     width: 100%;
     min-width: 0;
   }
@@ -663,20 +684,13 @@ h1 {
     align-self: stretch;
   }
 
-  /* Everything else in main column */
-  .page > :not(.top) {
-    grid-column: 2;
-    min-width: 0;
-  }
-
   /* Let posts use the full main width */
   .post-content {
-    padding: 20px 0 120px; /* remove side padding so it spans cleanly */
+    padding: 20px 0 120px;
     max-width: none;
   }
 
-  .gallery,
-  .footer {
-    margin-left: 0; /* prevent sidebar-style offsets */
+  .gallery {
+    margin-left: 0;
   }
 }

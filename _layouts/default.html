@@ -21,11 +21,11 @@
 
   <body>
     <main class="page">
-     
-      {% include top.html %}
-      
-      
-      <div class="subscribe">
+
+      <aside class="sidebar">
+        {% include top.html %}
+        
+        <div class="subscribe">
           <form action="https://buttondown.com/api/emails/embed-subscribe/TacticsJournal" 
                 method="post" 
                 target="_blank"
@@ -41,25 +41,28 @@
           </form>
         </div>
       
-      <div class="nav">
-        <a href="https://kyleboas.github.io/Erin-Bakes/" class="all">All</a>
-        <span class="sep">•</span>
-        <a href="https://kyleboas.github.io/Erin-Bakes/bakes/" class="bakes">Bakes</a>
-        <span class="sep">•</span>
-        <a href="https://kyleboas.github.io/Erin-Bakes/travels" class="travels">Travels</a>
-        <span class="sep">•</span>
-        <a href="https://kyleboas.github.io/Erin-Bakes/cooks" class="cooks">Cooks</a>
-        <span class="sep">•</span>
-        <a href="https://kyleboas.github.io/Erin-Bakes/reads" class="reads">Reads</a>
+        <div class="nav">
+          <a href="https://kyleboas.github.io/Erin-Bakes/" class="all">All</a>
+          <span class="sep">•</span>
+          <a href="https://kyleboas.github.io/Erin-Bakes/bakes/" class="bakes">Bakes</a>
+          <span class="sep">•</span>
+          <a href="https://kyleboas.github.io/Erin-Bakes/travels" class="travels">Travels</a>
+          <span class="sep">•</span>
+          <a href="https://kyleboas.github.io/Erin-Bakes/cooks" class="cooks">Cooks</a>
+          <span class="sep">•</span>
+          <a href="https://kyleboas.github.io/Erin-Bakes/reads" class="reads">Reads</a>
+        </div>
+      </aside>
+
+      <section class="main">
+        {{ content }}
+      </section>
+
+      <div class="footer">
+        <p>Made by <a href="https://kyleboas.com">Kyle Boas</a>. Copyright © 2025 Erin Boas</p>
       </div>
-        
-      
-      {{ content }}
     
     </main>
-    <div class="footer">
-    <p>Made by <a href="https://kyleboas.com">Kyle Boas</a>. Copyright © 2025 Erin Boas</p>
-    </div>
     
 <script>
   document.addEventListener("DOMContentLoaded", () => {
