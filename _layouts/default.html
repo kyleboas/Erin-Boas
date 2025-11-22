@@ -106,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("messageModal");
   const modalText = document.getElementById("messageModalText");
   const sendBtn = document.getElementById("messageModalSend");
-  const closeEls = modal ? modal.querySelectorAll("[data-close]") : [];
   let lastFocused = null;
 
   if (!messageInput || !modal) return;
@@ -129,19 +128,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastFocused) lastFocused.focus();
   }
 
-  // Open on click or focus
-  messageInput.addEventListener("focus", (e) => {
+  // Only open if Full Name + Email are filled
+  function tryOpenModal(e) {
+    const form = messageInput.closest("form");
+    const nameInput = form ? form.querySelector("#fullName") : null;
+    const emailInput = form ? form.querySelector("#email") : null;
+
+    if (nameInput && !nameInput.value.trim()) {
+      e.preventDefault();
+      nameInput.focus();
+      if (nameInput.reportValidity) nameInput.reportValidity();
+      return;
+    }
+
+    if (emailInput && !emailInput.value.trim()) {
+      e.preventDefault();
+      emailInput.focus();
+      if (emailInput.reportValidity) emailInput.reportValidity();
+      return;
+    }
+
     e.preventDefault();
     openModal();
-  });
-  messageInput.addEventListener("click", (e) => {
-    e.preventDefault();
-    openModal();
-  });
+  }
+
+  // Open on click or focus (guarded)
+  messageInput.addEventListener("focus", tryOpenModal);
+  messageInput.addEventListener("click", tryOpenModal);
 
   // Close on X or backdrop (delegated)
   modal.addEventListener("click", (e) => {
     if (e.target.closest("[data-close]")) {
+      closeModal();
+    }
+  });
+
+  // Esc closes
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("is-open") && e.key === "Escape") {
       closeModal();
     }
   });
