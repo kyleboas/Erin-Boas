@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<section class="gallery" aria-label="{% if page.category %}{{ page.category | capitalize }}{% else %}All{% endif %}">
+  {% assign cat = page.category | downcase %}
+
+  {% for post in site.posts %}
+    {% if cat == "" or cat == nil or cat == "all" or post.categories contains cat %}
+      {% if post.image %}
+        <div class="post-link">
+          <a href="{{ post.url | relative_url }}">
+            <img class="cake-shot"
+                 src="{{ post.image | relative_url }}"
+                 alt="{{ post.title }}">
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</section>
