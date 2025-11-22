@@ -105,40 +105,43 @@ body {
 }
 
 /* --- name swap animation --- */
+/* --- name swap animation (adjusted for Playfair italics) --- */
 .name.name-swap {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.35ch; /* space between Erin and last name */
+  gap: 0.35ch;
 }
 
+/* wrapper that stacks the last names */
 .name-swap .last-wrap {
   position: relative;
   display: inline-block;
-  line-height: 1;
-  height: 1em;          /* reserve space so layout doesn't jump */
-  min-width: 4ch;       /* optional: prevents tiny width jitter */
-  overflow: hidden;     /* hides slide-in/out */
+  line-height: 1.15;   /* more breathing room */
+  height: 1.25em;      /* taller so italics don't clip */
+  min-width: 4.5ch;
+  vertical-align: baseline;
+  padding-top: 0.05em; /* nudges the stack down a hair */
 }
 
+/* both last names occupy the same spot */
 .name-swap .last {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0.06em;         /* pushes both names down */
   white-space: nowrap;
 }
 
+/* initial states */
 .name-swap .last-boas {
   opacity: 1;
   transform: translateY(0);
   animation: boas-out 700ms ease forwards;
   animation-delay: 900ms;
-  color: #000;
-  font-style: none;
 }
 
 .name-swap .last-bakes {
   opacity: 0;
-  transform: translateY(-120%);
+  transform: translateY(-140%); /* start higher so slide feels natural */
   animation: bakes-in 700ms ease forwards;
   animation-delay: 1100ms;
 }
@@ -146,7 +149,7 @@ body {
 @keyframes boas-out {
   to {
     opacity: 0;
-    transform: translateY(25%);
+    transform: translateY(35%);
   }
 }
 
