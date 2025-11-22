@@ -116,42 +116,71 @@ body {
   position: relative;
   display: inline-block;
   height: 0.85em;
-  min-width: 4.5ch;
+  min-width: 6ch;        /* a bit wider to fit "Travels" cleanly */
   vertical-align: baseline;
-  padding-top: 0.05em; /* nudges the stack down a hair */
+  padding-top: 0.05em;
 }
 
-/* both last names occupy the same spot */
+/* all last names occupy the same spot */
 .name-swap .last {
   position: absolute;
   left: 0;
-  top: 0.06em;         /* pushes both names down */
+  top: 0.06em;
   white-space: nowrap;
 }
 
-/* initial states */
+/* BOAS -> BAKES -> TRAVELS -> COOKS -> READS */
+
+/* initial visible word */
 .name-swap .last-boas {
   opacity: 1;
   transform: translateY(0);
-  animation: boas-out 700ms ease forwards;
+  animation: swap-out 700ms ease forwards;
   animation-delay: 900ms;
 }
 
+/* BAKES in, then out */
 .name-swap .last-bakes {
   opacity: 0;
-  transform: translateY(-140%); /* start higher so slide feels natural */
-  animation: bakes-in 700ms ease forwards;
-  animation-delay: 1100ms;
+  transform: translateY(-140%);
+  animation:
+    swap-in 700ms ease forwards 1100ms,
+    swap-out 700ms ease forwards 3100ms;
 }
 
-@keyframes boas-out {
+/* TRAVELS in, then out */
+.name-swap .last-travels {
+  opacity: 0;
+  transform: translateY(-140%);
+  animation:
+    swap-in 700ms ease forwards 3300ms,
+    swap-out 700ms ease forwards 5300ms;
+}
+
+/* COOKS in, then out */
+.name-swap .last-cooks {
+  opacity: 0;
+  transform: translateY(-140%);
+  animation:
+    swap-in 700ms ease forwards 5500ms,
+    swap-out 700ms ease forwards 7500ms;
+}
+
+/* READS in and stays */
+.name-swap .last-reads {
+  opacity: 0;
+  transform: translateY(-140%);
+  animation: swap-in 700ms ease forwards 7700ms;
+}
+
+@keyframes swap-out {
   to {
     opacity: 0;
     transform: translateY(35%);
   }
 }
 
-@keyframes bakes-in {
+@keyframes swap-in {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -159,13 +188,15 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .name-swap .last-boas,
-  .name-swap .last-bakes {
+  .name-swap .last {
     animation: none !important;
     transform: none !important;
   }
-  .name-swap .last-boas { opacity: 0; }
-  .name-swap .last-bakes { opacity: 1; }
+  .name-swap .last-boas,
+  .name-swap .last-bakes,
+  .name-swap .last-travels,
+  .name-swap .last-cooks { opacity: 0; }
+  .name-swap .last-reads { opacity: 1; }
 }
 
 .location {
