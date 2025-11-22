@@ -31,7 +31,13 @@
               </div>
 
               <div class="profile-text">
-                <h1 class="name">Erin <span class="accent">Bakes</span></h1>
+                <h1 class="name name-swap">
+                Erin
+                <span class="last-wrap" aria-live="polite">
+                  <span class="last last-boas">Boas</span>
+                  <span class="last last-bakes accent">Bakes</span>
+                </span>
+              </h1>
                 <div class="location">WASHINGTON, DC</div>
               </div>
             </div>
@@ -102,6 +108,15 @@
     }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
 
     images.forEach(img => observer.observe(img));
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const name = document.querySelector(".name-swap");
+    if (!name) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    name.classList.add("run");
   });
 </script>
 
