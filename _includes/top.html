@@ -105,6 +105,9 @@
         {% if page.category == "bakes" %}
           <label class="label" for="dateVenue">Date &amp; Venue</label>
           <input class="input" id="dateVenue" name="dateVenue" type="text" />
+        {% elsif page.category == "recipe" %}
+           <label class="label" for="recipe">Recipe</label>
+          <input class="input" id="recipe" name="dateVenue" type="text" />
         {% else %}
           <label class="label" for="message">Message</label>
           <input class="input" id="message" name="message" type="text" />
