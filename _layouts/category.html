@@ -3,17 +3,17 @@ layout: default
 ---
 
 <section class="gallery" aria-label="{% if page.category %}{{ page.category | capitalize }}{% else %}All{% endif %}">
-  {% assign cat = page.category | default: "" | downcase %}
+  {% assign cat = page.category | downcase | strip %}
 
   {% for post in site.posts %}
     {% assign post_cats = post.categories | join: " " | downcase %}
 
-    {% if cat == "" or cat == "all" or post_cats contains cat %}
+    {% if cat == "" or cat == nil or cat == "all" or post_cats contains cat %}
       {% if post.image %}
         <div class="post-link">
           <a href="{{ post.url | relative_url }}">
             <img class="cake-shot"
-                 src="{{ post.image | relative_url }}"
+                 src="{{ post.image }}"
                  alt="{{ post.title }}">
           </a>
         </div>
