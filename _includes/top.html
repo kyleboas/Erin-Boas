@@ -45,7 +45,7 @@
       {% elsif page.category == "cooks" %}
         Cooking meals, testing recipes, and feeding people I love.
       {% elsif page.category == "reads" %}
-        What I’m reading and what I’m learning.
+        What I’m reading and what I’m learning. 
       {% else %}
         Associate at Spencer Stuart, discovering and developing leadership for a better future within the Education and Social Impact practice in Washington, D.C.
       {% endif %}
@@ -53,6 +53,23 @@
   </div>
 
   <!-- RIGHT -->
+  {% if page.category == "bakes" %}
+    <form class="contact" action="#" method="post">
+      <div class="field">
+        <label class="label" for="fullName">Full Name</label>
+        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Email Address</label>
+        <input class="input" id="email" name="email" type="email" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="dateVenue">Date &amp; Venue</label>
+        <input class="input" id="dateVenue" name="dateVenue" type="text" />
+      </div>
+    </form>
   {% if page.category == "travels" %}
     <form class="contact" action="#" method="post">
       <div class="field">
@@ -70,6 +87,24 @@
         <input class="input" id="travelRecomend" name="travelRecomend" type="text" />
       </div>
     </form>
+    
+  {% if page.category == "reads" %}
+    <form class="contact" action="#" method="post">
+      <div class="field">
+        <label class="label" for="fullName">Full Name</label>
+        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Email Address</label>
+        <input class="input" id="email" name="email" type="email" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="bookRec">Book</label>
+        <input class="input" id="bookRec" name="bookRec" type="text" />
+      </div> 
+  
 
   {% else %}
     <form class="contact" action="#" method="post">
