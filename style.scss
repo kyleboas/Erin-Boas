@@ -92,6 +92,8 @@ body {
   white-space: nowrap;
   margin: 0;
   padding-bottom: 5px;
+  margin-bottom: 0px;
+  text-transform: none;
 }
 
 .name .accent {
@@ -225,7 +227,7 @@ h1 {
 }
 
 /* Fade-in animation for gallery images */
-.cake-shot{
+.cake-shot {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
 }
