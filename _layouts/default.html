@@ -73,8 +73,16 @@
   document.addEventListener("DOMContentLoaded", () => {
     const images = document.querySelectorAll(".gallery .cake-shot");
 
+    if (images.length === 0) return;
+
+    // First image shows immediately
+    images[0].classList.add("is-visible");
+
+    // Observe the rest
+    const rest = Array.from(images).slice(1);
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      images.forEach(img => img.classList.add("is-visible"));
+      rest.forEach(img => img.classList.add("is-visible"));
       return;
     }
 
@@ -87,7 +95,7 @@
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
 
-    images.forEach(img => observer.observe(img));
+    rest.forEach(img => observer.observe(img));
   });
 </script>
 
