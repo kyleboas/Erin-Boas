@@ -9,4 +9,10 @@ Oh my god, cupcakes. How precious.
 
 <!---more--->
 
-Ingredients 
+Ingredients:
+
+* I prefer Brownies
+
+Instructions:
+
+* Eat Brownies instead  
