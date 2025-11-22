@@ -231,8 +231,8 @@ h1 {
 .gallery .cake-shot {
   opacity: 1;
   transform: none;
-  transition: opacity 2.6s cubic-bezier(.22,.61,.36,1),
-              transform 2.6s cubic-bezier(.22,.61,.36,1);
+  transition: opacity 3.6s cubic-bezier(.22,.61,.36,1),
+              transform 3.6s cubic-bezier(.22,.61,.36,1);
   will-change: opacity, transform;
 }
 
