@@ -353,6 +353,19 @@ h1 {
   transform: translateY(0);
 }
 
+/* First cake-shot: always visible, no animation */
+.gallery .cake-shot.no-transition {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto;
+}
+
+.reveal-ready .gallery .cake-shot.no-transition {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gallery .cake-shot,
   .reveal-ready .gallery .cake-shot {

@@ -88,15 +88,22 @@
     <p>Made by <a href="https://kyleboas.com">Kyle Boas</a>. Copyright © 2025 Erin Boas</p>
     </div>
     
-    
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".gallery .cake-shot");
+    const images = Array.from(document.querySelectorAll(".gallery .cake-shot"));
+    if (!images.length) return;
 
+    // first image: no transition, show immediately
+    const first = images[0];
+    first.classList.add("is-visible", "no-transition");
+
+    // reduced motion: show everything, no observer
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       images.forEach(img => img.classList.add("is-visible"));
       return;
     }
+
+    const rest = images.slice(1);
 
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -107,7 +114,7 @@
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
 
-    images.forEach(img => observer.observe(img));
+    rest.forEach(img => observer.observe(img));
   });
 </script>
 
