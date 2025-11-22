@@ -116,7 +116,7 @@ body {
   position: relative;
   display: inline-block;
   height: 0.85em;
-  min-width: 6ch;        /* a bit wider to fit "Travels" cleanly */
+  min-width: 6ch;
   vertical-align: baseline;
   padding-top: 0.05em;
 }
@@ -127,64 +127,67 @@ body {
   left: 0;
   top: 0.06em;
   white-space: nowrap;
+
+  /* cycle control */
+  --cycle: 10s;                 /* total loop length; tweak if you want faster/slower */
+  animation-duration: var(--cycle);
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
 }
 
-/* BOAS -> BAKES -> TRAVELS -> COOKS -> READS */
-
-/* initial visible word */
+/* BOAS */
 .name-swap .last-boas {
-  opacity: 1;
-  transform: translateY(0);
-  animation: swap-out 700ms ease forwards;
-  animation-delay: 900ms;
+  animation-name: boas-cycle;
 }
 
-/* BAKES in, then out */
+/* BAKES */
 .name-swap .last-bakes {
-  opacity: 0;
-  transform: translateY(-140%);
-  animation:
-    swap-in 700ms ease forwards 1100ms,
-    swap-out 700ms ease forwards 3100ms;
+  animation-name: bakes-cycle;
 }
 
-/* TRAVELS in, then out */
+/* TRAVELS */
 .name-swap .last-travels {
-  opacity: 0;
-  transform: translateY(-140%);
-  animation:
-    swap-in 700ms ease forwards 3300ms,
-    swap-out 700ms ease forwards 5300ms;
+  animation-name: travels-cycle;
 }
 
-/* COOKS in, then out */
+/* COOKS */
 .name-swap .last-cooks {
-  opacity: 0;
-  transform: translateY(-140%);
-  animation:
-    swap-in 700ms ease forwards 5500ms,
-    swap-out 700ms ease forwards 7500ms;
+  animation-name: cooks-cycle;
 }
 
-/* READS in and stays */
+/* READS */
 .name-swap .last-reads {
-  opacity: 0;
-  transform: translateY(-140%);
-  animation: swap-in 700ms ease forwards 7700ms;
+  animation-name: reads-cycle;
 }
 
-@keyframes swap-out {
-  to {
-    opacity: 0;
-    transform: translateY(35%);
-  }
+/* Each word is visible for a slice of the 0–100% timeline */
+@keyframes boas-cycle {
+  0%, 16%   { opacity: 1; transform: translateY(0); }
+  20%, 100% { opacity: 0; transform: translateY(35%); }
 }
 
-@keyframes swap-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes bakes-cycle {
+  0%, 16%   { opacity: 0; transform: translateY(-140%); }
+  20%, 36%  { opacity: 1; transform: translateY(0); }
+  40%, 100% { opacity: 0; transform: translateY(35%); }
+}
+
+@keyframes travels-cycle {
+  0%, 36%   { opacity: 0; transform: translateY(-140%); }
+  40%, 56%  { opacity: 1; transform: translateY(0); }
+  60%, 100% { opacity: 0; transform: translateY(35%); }
+}
+
+@keyframes cooks-cycle {
+  0%, 56%   { opacity: 0; transform: translateY(-140%); }
+  60%, 76%  { opacity: 1; transform: translateY(0); }
+  80%, 100% { opacity: 0; transform: translateY(35%); }
+}
+
+@keyframes reads-cycle {
+  0%, 76%   { opacity: 0; transform: translateY(-140%); }
+  80%, 96%  { opacity: 1; transform: translateY(0); }
+  100%      { opacity: 0; transform: translateY(35%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
