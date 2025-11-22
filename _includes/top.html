@@ -11,19 +11,18 @@
       </div>
 
       <div class="profile-text">
-        <h1 class="name name-swap">
+        <h1 class="name name-swap {% if page.category %}solo-{{ page.category }}{% endif %}">
           Erin
           <span class="last-wrap" aria-live="polite">
             {% if page.category == "bakes" %}
-              <span class="last-bakes accent">Bakes</span>
+              <span class="last last-bakes accent">Bakes</span>
             {% elsif page.category == "travels" %}
-              <span class="last-travels accent">Travels</span>
+              <span class="last last-travels accent">Travels</span>
             {% elsif page.category == "cooks" %}
-              <span class="last-cooks accent">Cooks</span>
+              <span class="last last-cooks accent">Cooks</span>
             {% elsif page.category == "reads" %}
-              <span class="last-reads accent">Reads</span>
+              <span class="last last-reads accent">Reads</span>
             {% else %}
-              <!-- All page -->
               <span class="last last-boas">Boas</span>
               <span class="last last-bakes accent">Bakes</span>
               <span class="last last-travels accent">Travels</span>
