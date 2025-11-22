@@ -692,8 +692,27 @@ h1 {
     max-width: none;
   }
 
+  /* Gallery: responsive rows of 200px tiles */
   .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    column-gap: 20px;  /* 20px between pictures in a row */
+    row-gap: 30px;     /* 30px between rows */
+    justify-content: start; /* left-align the grid */
     margin-left: 0;
-    margin-top: 0px;
+    margin-top: 0;
+  }
+
+  /* Make each item/image behave nicely inside the 200px cell */
+  .gallery a {
+    display: block;
+    width: 200px;
+  }
+
+  .gallery .cake-shot {
+    width: 200px;
+    height: auto;
+    display: block;
+    object-fit: cover; /* keeps cropping clean if you later set a fixed height */
   }
 }
