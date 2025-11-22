@@ -3,7 +3,7 @@ layout: post
 date: 2025-11-14 11:00 UTC
 title: "Nantucket"
 categories:
-- "Travel"
+- "Travels"
 tags:
 - "Nantucket"
 image: "https://raw.githubusercontent.com/kyleboas/Erin-Bakes/refs/heads/main/uploads/2025/11/IMG_9998.jpeg"
