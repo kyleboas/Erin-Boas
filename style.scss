@@ -162,8 +162,17 @@ body {
 
 /* Each word is visible for a slice of the 0–100% timeline */
 @keyframes boas-cycle {
-  0%, 16%   { opacity: 1; transform: translateY(0); }
-  20%, 100% { opacity: 0; transform: translateY(35%); }
+  0%        { opacity: 0; transform: translateY(-140%); } /* start hidden */
+  4%        { opacity: 1; transform: translateY(0); }    /* fade/slide in */
+  16%       { opacity: 1; transform: translateY(0); }    /* hold */
+  20%       { opacity: 0; transform: translateY(35%); }  /* fade/slide out */
+  100%      { opacity: 0; transform: translateY(35%); }
+}
+
+@keyframes reads-cycle {
+  0%, 76%   { opacity: 0; transform: translateY(-140%); }
+  80%, 96%  { opacity: 1; transform: translateY(0); }    /* hold */
+  100%      { opacity: 0; transform: translateY(35%); }  /* fade/slide out into Boas */
 }
 
 @keyframes bakes-cycle {
