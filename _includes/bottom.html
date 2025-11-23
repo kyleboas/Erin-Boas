@@ -1,16 +1,7 @@
 <div class="profile-text-bottom">
-        <h1 class="name name-swap {% if page.category %}solo-{{ page.category }}{% endif %}">
+        <h1 class="name name-swap">
           Erin
           <span class="last-wrap" aria-live="polite">
-            {% if page.category == "bakes" %}
-              <span class="last last-bakes accent">Bakes</span>
-            {% elsif page.category == "travels" %}
-              <span class="last last-travels accent">Travels</span>
-            {% elsif page.category == "cooks" %}
-              <span class="last last-cooks accent">Cooks</span>
-            {% elsif page.category == "writes" %}
-              <span class="last last-writes accent">Writes</span>
-            {% else %}
               <span class="last last-boas">Boas</span>
               <span class="last last-bakes accent">Bakes</span>
               <span class="last last-travels accent">Travels</span>
