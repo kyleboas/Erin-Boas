@@ -526,7 +526,11 @@ body.modal-open {
 .no-image {
   margin-left: 30px;
   margin-right: 30px;
-} 
+}
+
+.no-image h1 {
+  margin-top: 0px;
+}
 
 .post-description {
   font-family: "Playfair Display", Georgia, serif;
