@@ -52,7 +52,6 @@
   </div>
 
   <!-- RIGHT -->
-  {% if page.category == "travels" %}
     <form class="contact"
           action="https://formsubmit.co/kyle@tacticsjournal.com"
           method="POST">
@@ -73,67 +72,17 @@
       </div>
 
       <div class="field">
-        <label class="label" for="message">Location</label>
-        <input class="input" id="message" name="message" type="text" />
-      </div>
-
-      <!-- hidden submit so modal can submit the form -->
-      <button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
-    </form>
-
-  {% elsif page.category == "reads" %}
-    <form class="contact"
-          action="https://formsubmit.co/kyle@tacticsjournal.com"
-          method="POST">
-
-      <input type="hidden" name="_subject" value="New Erin Boas site contact" />
-      <input type="hidden" name="_captcha" value="true" />
-      <input type="hidden" name="_template" value="table" />
-
-      <div class="field">
-        <label class="label" for="fullName">Full Name</label>
-        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" required />
-      </div>
-
-      <div class="field">
-        <label class="label" for="email">Email Address</label>
-        <input class="input" id="email" name="email" type="email" autocomplete="email" required />
-      </div>
-
-      <div class="field">
-        <label class="label" for="message">Book</label>
-        <input class="input" id="message" name="message" type="text" />
-      </div>
-
-      <button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
-    </form>
-
-  {% else %}
-    <!-- default / bakes / cooks / all -->
-    <form class="contact"
-          action="https://formsubmit.co/kyle@tacticsjournal.com"
-          method="POST">
-
-      <input type="hidden" name="_subject" value="New Erin Boas site contact" />
-      <input type="hidden" name="_captcha" value="true" />
-      <input type="hidden" name="_template" value="table" />
-
-      <div class="field">
-        <label class="label" for="fullName">Full Name</label>
-        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" required />
-      </div>
-
-      <div class="field">
-        <label class="label" for="email">Email Address</label>
-        <input class="input" id="email" name="email" type="email" autocomplete="email" required />
-      </div>
-
-      <div class="field">
         {% if page.category == "bakes" %}
           <label class="label" for="message">Date &amp; Venue</label>
           <input class="input" id="message" name="message" type="text" />
+        {% elsif page.category == "travels" %}
+           <label class="label" for="message">Location</label>
+          <input class="input" id="message" name="message" type="text" />
         {% elsif page.category == "cooks" %}
            <label class="label" for="message">Recipe</label>
+          <input class="input" id="message" name="message" type="text" />
+        {% elsif page.category == "reads" %}
+           <label class="label" for="message">Book</label>
           <input class="input" id="message" name="message" type="text" />
         {% else %}
           <label class="label" for="message">Message</label>
@@ -143,5 +92,4 @@
 
       <button type="submit" hidden aria-hidden="true" tabindex="-1"></button>
     </form>
-  {% endif %}
 </section>
