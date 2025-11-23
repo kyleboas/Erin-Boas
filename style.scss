@@ -631,7 +631,7 @@ h1 {
 }
 
 /* === Sidebar layout above 760px (ordered: profile, blurb, subscribe, nav, contact) === */
-@media (min-width: 760px) {
+@media (min-width: 660px) {
   .page {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr); /* match sidebar width */
