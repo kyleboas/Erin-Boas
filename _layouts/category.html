@@ -9,15 +9,46 @@ layout: default
     {% assign post_cats = post.categories | join: " " | downcase %}
 
     {% if cat == "" or cat == nil or cat == "all" or post_cats contains cat %}
+      
       {% if post.image %}
-        <div class="post-link">
+        <!-- Image card -->
+        <div class="post-link has-image">
           <a href="{{ post.url | relative_url }}">
             <img class="cake-shot"
-                 src="{{ post.image }}"
+                 src="{{ post.image | relative_url }}"
                  alt="{{ post.title }}">
           </a>
         </div>
+
+      {% else %}
+        <!-- Text fallback card -->
+        <article class="post-link no-image">
+          <h1 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h1>
+
+          <p class="post-date">
+            {{ post.date | date: "%d %B %Y" }}
+          </p>
+
+          <div class="post-description">
+            {% assign ex = post.excerpt
+              | strip_html
+              | strip_newlines
+              | truncatewords: 40, "" %}
+            {% assign ex = ex | strip %}
+            {% assign last = ex | slice: -1, 1 %}
+
+            {% if last == "." or last == "," or last == "?" or last == "!" %}
+              {% assign new_len = ex.size | minus: 1 %}
+              {% assign ex = ex | slice: 0, new_len %}
+            {% endif %}
+
+            {{ ex }}
+          </div>
+        </article>
       {% endif %}
+
     {% endif %}
   {% endfor %}
 </section>

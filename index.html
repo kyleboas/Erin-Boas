@@ -13,7 +13,7 @@ layout: default
                src="{{ post.image | relative_url }}"
                alt="{{ post.title }}">
         </a>
-      </div>
+      </divdiv>
 
     {% else %}
       <!-- Text fallback card -->
@@ -27,8 +27,19 @@ layout: default
         </p>
 
         <div class="post-description">
-          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 40 }}
-          <a href="{{ post.url | relative_url }}">Read more...</a>
+          {% assign ex = post.excerpt
+            | strip_html
+            | strip_newlines
+            | truncatewords: 40, "" %}
+          {% assign ex = ex | strip %}
+          {% assign last = ex | slice: -1, 1 %}
+
+          {% if last == "." or last == "," or last == "?" or last == "!" %}
+            {% assign new_len = ex.size | minus: 1 %}
+            {% assign ex = ex | slice: 0, new_len %}
+          {% endif %}
+
+          {{ ex }}
         </div>
       </article>
     {% endif %}
