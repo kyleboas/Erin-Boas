@@ -634,9 +634,9 @@ h1 {
 @media (min-width: 760px) {
   .page {
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);  /* sidebar | main */
+    grid-template-columns: 220px minmax(0, 1fr);  /* sidebar | main (match sidebar width) */
     grid-template-rows: auto 1fr auto;           /* top content | filler | footer */
-    column-gap: 28px;
+    column-gap: 10px;                            /* main within 10px of sidebar */
     row-gap: 22px;
     align-items: start;
     padding: 48px 28px 0;
@@ -653,11 +653,12 @@ h1 {
     position: sticky;
     top: 24px;
     min-width: 0;
-    width: 220px;
+    width: 100%;                                /* fill the 220px grid column */
   }
 
   .top { display: contents; }
 
+  /* Order sidebar items */
   .sidebar .left      { order: 1; width: 100%; min-width: 0; }
   .sidebar .subscribe { order: 3; }
   .sidebar .nav       { order: 4; }
@@ -687,6 +688,7 @@ h1 {
 
   #message { height: 100px; }
 
+  /* Let posts use the full main width */
   .post-content {
     padding: 20px 0 120px;
     max-width: none;
@@ -700,7 +702,7 @@ h1 {
     row-gap: 30px;     /* 30px between rows */
     justify-content: start; /* left-align the grid */
     margin-left: 0;
-    margin-top: 0;
+    margin-top: 0px;
   }
 
   /* Make each item/image behave nicely inside the 200px cell */
