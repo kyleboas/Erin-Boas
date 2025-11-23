@@ -634,31 +634,30 @@ h1 {
 @media (min-width: 760px) {
   .page {
     display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);  /* sidebar | main (match sidebar width) */
-    grid-template-rows: auto 1fr auto;           /* top content | filler | footer */
-    column-gap: 10px;                            /* main within 10px of sidebar */
+    grid-template-columns: 220px minmax(0, 1fr); /* match sidebar width */
+    grid-template-rows: auto 1fr auto;
+    column-gap: 40px;  /* main within 40px of sidebar */
     row-gap: 22px;
     align-items: start;
     padding: 48px 28px 0;
-    min-height: 100vh;                          /* makes the filler row actually fill */
+    min-height: 100vh;
   }
 
   /* Sidebar column */
   .sidebar {
     grid-column: 1;
-    grid-row: 1;                                /* stays in the top row */
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: 0px;
     position: sticky;
     top: 24px;
     min-width: 0;
-    width: 100%;                                /* fill the 220px grid column */
+    width: 100%; /* fill the 220px column */
   }
 
   .top { display: contents; }
 
-  /* Order sidebar items */
   .sidebar .left      { order: 1; width: 100%; min-width: 0; }
   .sidebar .subscribe { order: 3; }
   .sidebar .nav       { order: 4; }
@@ -681,40 +680,26 @@ h1 {
   /* Footer pinned at bottom of left column */
   .footer {
     grid-column: 1;
-    grid-row: 3;            /* bottom row */
+    grid-row: 3;
     margin: 0;
-    align-self: end;        /* hug the bottom of that row */
+    align-self: end;
   }
 
   #message { height: 100px; }
 
-  /* Let posts use the full main width */
   .post-content {
     padding: 20px 0 120px;
     max-width: none;
   }
 
-  /* Gallery: responsive rows of 200px tiles */
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    column-gap: 20px;  /* 20px between pictures in a row */
-    row-gap: 30px;     /* 30px between rows */
-    justify-content: start; /* left-align the grid */
     margin-left: 0;
     margin-top: 0px;
-  }
 
-  /* Make each item/image behave nicely inside the 200px cell */
-  .gallery a {
-    display: block;
-    width: 200px;
-  }
-
-  .gallery .cake-shot {
-    width: 200px;
-    height: auto;
-    display: block;
-    object-fit: cover; /* keeps cropping clean if you later set a fixed height */
+    /* spacing rules */
+    display: grid;              /* safe even if you already set grid elsewhere */
+    column-gap: 20px;           /* between pics in a row */
+    row-gap: 30px;              /* between rows */
+    /* or shorthand: gap: 30px 20px; */
   }
 }
